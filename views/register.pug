@@ -1,0 +1,49 @@
+extends layout
+
+block content
+    .container.mt-5
+        h1 Register
+        .row
+            .col-sm-8
+                .card
+                    .card-body
+                        form(action="/register" method="POST")
+                            .form-row
+                                .col-md-4.mb-3
+                                    label(for = "validationDefault01") First Name
+                                    input(type = "text" class = "form-control" id = "validationDefault01" name = "firstName" required)
+                                .col-md-4.mb-3
+                                    label(for = "validationDefault02") Last Name
+                                    input(type = "text" class = "form-control" id = "validationDefault02" name = "lastName" required)
+                                .col-md-4.mb-3
+                                    label(for = "validationDefaultUsername") User Name
+                                    .input-group
+                                        .input-group-prepend
+                                            span(class = "input-group-text" id = "inputGroupPrepend2") @
+                                        input(type = "text" class = "form-control" id = "validationDefaultUsername" name = "username" aria-describedby = "inputGroupPrepend2" required)
+                            .form-group
+                                label(for = "email") Email
+                                input(type = "email" class = "form-control" name = "email" id="email")
+                            .form-group
+                                label(for = "password") Password
+                                input(type = "password" class = "form-control" name = "password" id="password")
+                            .form-group
+                                input(type = "password" class = "form-control" name = "password2" id="password2" placeholder="please re enter your password")
+                            button(type = "submit" class = "btn btn-dark") Register
+                        .container
+                            p(style="color: red")=info.message
+                            each err in errors
+                                if err
+                                    each val, index in err
+                                        p(style="color: red")=val
+
+            .col-sm-4
+                .card
+                    .card-body
+                        a.btn.btn-block(href='/auth/google', role='button')
+                            i.fab.fa-google
+                            |             Sign In with Google
+                    .card-body
+                        a.btn.btn-block(href = "/auth/facebook" role = "button")
+                            i.fab.fa-facebook
+                            |           Sign Up with Facebook

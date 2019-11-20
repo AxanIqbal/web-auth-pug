@@ -1,0 +1,28 @@
+extends layout
+
+block content
+    .container.mt-5
+        h1 Login
+        .row
+            .col-sm-8
+                .card
+                    .card-body
+                        // Makes POST request to /login route
+                        form(action='/login', method='POST')
+                            .form-group
+                                label(for='username') Username
+                                input.form-control(type='text', name='username')
+                            .form-group
+                                label(for='password') Password
+                                input.form-control(type='password', name='password')
+                            button.btn.btn-dark(type='submit') Login
+            .col-sm-4
+                .card
+                    .card-body
+                        a.btn.btn-block(href='/auth/google', role='button')
+                            i.fab.fa-google
+                            |             Sign In with Google
+                    .card-body
+                        a.btn.btn-block(href = "/auth/facebook" role = "button")
+                            i.fab.fa-facebook
+                            |           Sign Up with Facebook
